@@ -1,0 +1,82 @@
+﻿@model IEnumerable<StudioF.Prueba.Web.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div class="row">
+    <div class="col-md-6 form-horizontal">
+        <form action="/Productos/Index" method="post">
+
+            <h3>Seleccione por que desea filta</h3>
+            <div>
+                <input type="radio"  name="filtro" value="?ft=" required>
+                <label for="Name">Por nombre</label>
+                <br />
+                <input type="radio"  name="filtro" value="?fq=productId:" required>
+                <label for="Name">Por Id del producto</label>
+                <br />
+                <input type="radio"  name="filtro" value="fq=C:" required>
+                <label for="Name">Por catergoria</label>
+            </div>
+            <input type="text" class="form-control" name="consulta" required autofocus>
+            <br />
+            <button class="btn btn-primary" type="submit">
+                Buscar Producto
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.productId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.productId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.categoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
